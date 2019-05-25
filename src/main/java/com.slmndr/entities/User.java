@@ -1,7 +1,8 @@
 package com.slmndr.entities;
 
-import com.slmndr.entities.common.Gender;
-import com.slmndr.entities.common.UserIdType;
+import com.slmndr.common.Gender;
+import com.slmndr.common.UserIdType;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "users")
 @Table(name = "users")
+@Data
 @Getter
 @Setter
 public class User implements Serializable {
@@ -56,4 +58,22 @@ public class User implements Serializable {
     @Column(name = "gender", columnDefinition = "enum('MALE','FEMALE')")
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Override
+    public String toString() {
+        return "{ " +
+            "id=" + id +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            ", name='" + name + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            ", userIdType=" + userIdType +
+            ", userId='" + userId + '\'' +
+            ", phone='" + phone + '\'' +
+            ", address='" + address + '\'' +
+            ", country='" + country + '\'' +
+            ", gender=" + gender +
+            " " + '}';
+    }
 }

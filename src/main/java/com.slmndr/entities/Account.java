@@ -2,6 +2,7 @@ package com.slmndr.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,8 +23,8 @@ public class Account implements Serializable {
     @Column(name = "account_number")
     private String accountNumber;
 
-    @Column(name = "balance")
-    private String balance;
+    @Column(name = "balance", nullable = false, columnDefinition = "int DEFAULT 10000")
+    private Integer balance;
 
     // TODO: Review here to get data of User owner of the account.
     @Column(name = "user_id")

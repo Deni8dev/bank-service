@@ -1,0 +1,19 @@
+POST http://localhost:8080/v1/users
+Content-type: application/json; charset=UTF-8
+Request-Body
+
+{
+  "username": "janachury",
+  "password": "janachury",
+  "name": "Jesus",
+  "lastName": "Anachury",
+  "email": "denilsoncastro1997@gmail.com",
+  "userIdType": "ID_CARD",
+  "userId": "1003427860",
+  "phone": "3507646399",
+  "address": "Cra 32 # 43 - 12",
+  "country": "CO",
+  "gender": "MALE"
+}
+
+###

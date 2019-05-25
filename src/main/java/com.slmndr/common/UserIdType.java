@@ -1,4 +1,4 @@
-package com.slmndr.entities.common;
+package com.slmndr.common;
 
 import lombok.Getter;
 
