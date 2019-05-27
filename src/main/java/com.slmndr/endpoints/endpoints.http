@@ -3,9 +3,9 @@ Content-type: application/json; charset=UTF-8
 Request-Body
 
 {
-  "username": "janachury",
-  "password": "janachury",
-  "name": "Jesus",
+  "username": "denilson.a",
+  "password": "denilson.a",
+  "name": "Denilson",
   "lastName": "Anachury",
   "email": "denilsoncastro1997@gmail.com",
   "userIdType": "ID_CARD",
@@ -14,6 +14,16 @@ Request-Body
   "address": "Cra 32 # 43 - 12",
   "country": "CO",
   "gender": "MALE"
+}
+
+###
+POST http://localhost:8080/v1/login
+Content-type: application/json; charset=UTF-8
+Request-Body
+
+{
+  "username": "danachury",
+  "password": "-- ;"
 }
 
 ###

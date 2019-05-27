@@ -1,16 +1,23 @@
 package com.slmndr.endpoints;
 
 import com.slmndr.entities.User;
+import com.slmndr.mail.EmailSender;
 import com.slmndr.services.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.mail.MessagingException;
 
 @RestController
 public class UserController {
 
     private final UserService userService;
+    private final EmailSender emailSender;
 
-    public UserController(UserService userService) {
+    public UserController(final UserService userService, final EmailSender emailSender) {
         this.userService = userService;
+        this.emailSender = emailSender;
     }
 
     @GetMapping("/v1/users")
@@ -23,12 +30,18 @@ public class UserController {
         return this.userService.find(username);
     }
 
-    @PostMapping(value = "/v1/users")
-    public String save(@RequestBody(required = false) User user) {
+    @PostMapping("/v1/users")
+    public ResponseEntity save(@RequestBody(required = false) User user) {
         final Boolean bool = this.userService.save(user);
-        if (bool)
-            // TODO: Send Email to user here
-            return "User saved!";
-        return "";
+        if (bool) {
+            try {
+                this.emailSender.sendEmail(user.getEmail());
+                return ResponseEntity.ok().build();
+            } catch (MessagingException e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+        }
+        return ResponseEntity.badRequest().build();
     }
+
 }
