@@ -1,6 +1,8 @@
 package com.slmndr.services;
 
+import com.slmndr.entities.User;
+
 public interface LoginService {
 
-    Boolean login(String username, String password);
+    User login(String username, String password);
 }

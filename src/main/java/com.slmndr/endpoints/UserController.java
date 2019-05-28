@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 
 @RestController
+@CrossOrigin("*")
 public class UserController {
 
     private final UserService userService;

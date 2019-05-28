@@ -22,12 +22,16 @@ public class LoginRepository implements LoginService {
     }
 
     @Override
-    public Boolean login(String username, String password) {
+    public User login(String username, String password) {
         final Session session = this.sessionFactory.getCurrentSession();
         final TypedQuery<User> query =
             session.createQuery("FROM users WHERE username = :username AND password = :password", User.class);
         query.setParameter("username", username);
         query.setParameter("password", password);
-        return query.getResultList().size() == 1;
+        try {
+            return query.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

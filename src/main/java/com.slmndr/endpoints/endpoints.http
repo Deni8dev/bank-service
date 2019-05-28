@@ -3,11 +3,11 @@ Content-type: application/json; charset=UTF-8
 Request-Body
 
 {
-  "username": "denilson.a",
-  "password": "denilson.a",
+  "username": "denilson.p",
+  "password": "denilson.p",
   "name": "Denilson",
   "lastName": "Anachury",
-  "email": "denilsoncastro1997@gmail.com",
+  "email": "anachury97@hotmail.com",
   "userIdType": "ID_CARD",
   "userId": "1003427860",
   "phone": "3507646399",
@@ -23,7 +23,7 @@ Request-Body
 
 {
   "username": "danachury",
-  "password": "-- ;"
+  "password": "danachury"
 }
 
 ###
