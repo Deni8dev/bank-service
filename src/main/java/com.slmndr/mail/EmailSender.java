@@ -1,5 +1,7 @@
 package com.slmndr.mail;
 
+import com.slmndr.entities.User;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -16,13 +18,18 @@ public class EmailSender {
         this.fromEmail = fromEmail;
     }
 
-    public void sendEmail(final String toEmail) throws MessagingException {
-        Transport.send(this.buildMessage(toEmail));
+    public void sendEmail(final String toEmail, final User data) throws MessagingException {
+        Transport.send(this.buildMessage(toEmail, data));
     }
 
-    private Message buildMessage(final String toEmail) throws MessagingException {
+    private Message buildMessage(final String toEmail, final User data) throws MessagingException {
         final Message message = new MimeMessage(this.session);
-        final String msg = "Your Salamandra Account has been created successfully.";
+        final String msg = "" +
+            "Your Salamandra Account has been created successfully." +
+            "<br/>" +
+            "Dont forget change your password.<br/><br/>" +
+            "<b>Username</b>: " + data.getUsername() +
+            "<b>Password</b>: " + data.getPassword();
 
         final MimeBodyPart mimeBodyPart = new MimeBodyPart();
         mimeBodyPart.setContent(msg, "text/html");

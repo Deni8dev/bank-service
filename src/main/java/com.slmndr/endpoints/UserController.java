@@ -36,7 +36,7 @@ public class UserController {
         final Boolean bool = this.userService.save(user);
         if (bool) {
             try {
-                this.emailSender.sendEmail(user.getEmail());
+                this.emailSender.sendEmail(user.getEmail(), user);
                 return ResponseEntity.ok().build();
             } catch (MessagingException e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

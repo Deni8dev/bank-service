@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @RestController
 @CrossOrigin("*")
@@ -26,13 +27,15 @@ public class LoginController {
     @PostMapping("/v1/login")
     public ResponseEntity login(@RequestBody LoginContext loginContext) {
         if (isValidLoginContext(loginContext)) {
-            final User user = this.loginService.login(loginContext.getPassword(), loginContext.getPassword());
-
-            if (user != null)
-                return ResponseEntity.ok(user);
-            return ResponseEntity.badRequest().build();
+            try {
+                final User user = this.loginService.login(loginContext.getPassword(), loginContext.getPassword());
+                return ResponseEntity.ok(Objects.requireNonNullElse(user, false));
+            } catch (Exception e) {
+                return ResponseEntity.ok(false);
+            }
         }
-        return ResponseEntity.badRequest().build();
+
+        return ResponseEntity.ok(false);
     }
 
     private Boolean isValidLoginContext(LoginContext loginContext) {
