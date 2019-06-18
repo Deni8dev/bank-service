@@ -3,9 +3,11 @@ package com.slmndr.config;
 import com.slmndr.mail.EmailSender;
 import com.slmndr.services.AccountService;
 import com.slmndr.services.LoginService;
+import com.slmndr.services.TransactionService;
 import com.slmndr.services.UserService;
 import com.slmndr.services.repositories.AccountRepository;
 import com.slmndr.services.repositories.LoginRepository;
+import com.slmndr.services.repositories.TransactionRepository;
 import com.slmndr.services.repositories.UserRepository;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -57,6 +59,11 @@ public class Config {
     @Bean
     public LoginService loginService(final SessionFactory sessionFactory) {
         return new LoginRepository(sessionFactory);
+    }
+
+    @Bean
+    public TransactionService transactionService(final SessionFactory sessionFactory) {
+        return new TransactionRepository(sessionFactory);
     }
 
     @Bean

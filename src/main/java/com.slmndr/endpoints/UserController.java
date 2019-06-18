@@ -3,7 +3,6 @@ package com.slmndr.endpoints;
 import com.slmndr.entities.User;
 import com.slmndr.mail.EmailSender;
 import com.slmndr.services.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,9 +36,9 @@ public class UserController {
         if (bool) {
             try {
                 this.emailSender.sendEmail(user.getEmail(), user);
-                return ResponseEntity.ok().build();
+                return ResponseEntity.ok(true);
             } catch (MessagingException e) {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                return ResponseEntity.ok(false);
             }
         }
         return ResponseEntity.badRequest().build();

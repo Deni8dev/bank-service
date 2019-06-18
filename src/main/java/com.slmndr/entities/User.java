@@ -1,7 +1,7 @@
 package com.slmndr.entities;
 
-import com.slmndr.common.Gender;
-import com.slmndr.common.UserIdType;
+import com.slmndr.entities.enums.Gender;
+import com.slmndr.entities.enums.UserIdType;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

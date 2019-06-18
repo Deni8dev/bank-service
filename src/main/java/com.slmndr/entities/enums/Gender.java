@@ -1,4 +1,4 @@
-package com.slmndr.common;
+package com.slmndr.entities.enums;
 
 import lombok.Getter;
 

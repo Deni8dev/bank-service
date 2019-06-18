@@ -1,6 +1,6 @@
 package com.slmndr.services.repositories;
 
-import com.slmndr.common.Generator;
+import com.slmndr.util.Generator;
 import com.slmndr.entities.Account;
 import com.slmndr.entities.User;
 import com.slmndr.services.UserService;

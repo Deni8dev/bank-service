@@ -1,5 +1,6 @@
-package com.slmndr.common;
+package com.slmndr.entities.enums;
 
+import com.slmndr.util.Generator;
 import org.junit.Assert;
 import org.junit.Test;
 

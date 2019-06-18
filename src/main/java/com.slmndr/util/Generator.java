@@ -1,4 +1,4 @@
-package com.slmndr.common;
+package com.slmndr.util;
 
 import com.google.common.base.Splitter;
 
